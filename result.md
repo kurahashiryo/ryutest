@@ -9,9 +9,9 @@ title: Ryu Certification - __TITLE__
 
 | |OK|ERROR|
 |----------|---|---|
-|[Action](#Action)|11|45|
+|[Action](#Action)|10|46|
 |&nbsp;&nbsp;&nbsp;&nbsp;(Required)|&nbsp;&nbsp;&nbsp;&nbsp;(3)|&nbsp;&nbsp;&nbsp;&nbsp;(0)|
-|&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(8)|&nbsp;&nbsp;&nbsp;&nbsp;(45)|
+|&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(7)|&nbsp;&nbsp;&nbsp;&nbsp;(46)|
 |[set_field](#set_field)|26|144|
 |&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(26)|&nbsp;&nbsp;&nbsp;&nbsp;(144)|
 |[Match](#Match)|180|498|
@@ -22,9 +22,9 @@ title: Ryu Certification - __TITLE__
 |&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(5)|&nbsp;&nbsp;&nbsp;&nbsp;(7)|
 |[Meter](#Meter)|0|36|
 |&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(0)|&nbsp;&nbsp;&nbsp;&nbsp;(36)|
-|Total|225|730|
+|Total|224|731|
 |&nbsp;&nbsp;&nbsp;&nbsp;(Required)|&nbsp;&nbsp;&nbsp;&nbsp;(76)|&nbsp;&nbsp;&nbsp;&nbsp;(38)|
-|&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(149)|&nbsp;&nbsp;&nbsp;&nbsp;(692)|
+|&nbsp;&nbsp;&nbsp;&nbsp;(Optional)|&nbsp;&nbsp;&nbsp;&nbsp;(148)|&nbsp;&nbsp;&nbsp;&nbsp;(693)|
 
 ## <a name ='Action'>Action</a>
 
@@ -36,7 +36,7 @@ title: Ryu Certification - __TITLE__
 |[PUSH_PBB](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/26_PUSH_PBB.json)|- | [ERROR](#5d818f5bd3c537066c61f0a9a71df0b3) | [ERROR](#5d818f5bd3c537066c61f0a9a71df0b3) | [ERROR](#5d818f5bd3c537066c61f0a9a71df0b3) |
 |[PUSH_VLAN (multiple)](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/17_PUSH_VLAN_multiple.json)|- | [ERROR](#cdf28d261795cce41af2b316f024c762) | [ERROR](#cdf28d261795cce41af2b316f024c762) | [ERROR](#cdf28d261795cce41af2b316f024c762) |
 |[POP_VLAN](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/18_POP_VLAN.json)|- | [OK](#9d7f35a26be3f1fd987a89d0d6ba67c9) | [OK](#9d7f35a26be3f1fd987a89d0d6ba67c9) | [OK](#9d7f35a26be3f1fd987a89d0d6ba67c9) |
-|[COPY_TTL_OUT](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/11_COPY_TTL_OUT.json)|- | [OK](#069a36adbdd0739563365540be6e9b28) | [ERROR](#069a36adbdd0739563365540be6e9b28) | [](#069a36adbdd0739563365540be6e9b28) |
+|[COPY_TTL_OUT](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/11_COPY_TTL_OUT.json)|- | [ERROR](#069a36adbdd0739563365540be6e9b28) | [ERROR](#069a36adbdd0739563365540be6e9b28) | [](#069a36adbdd0739563365540be6e9b28) |
 |[COPY_TTL_IN](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/12_COPY_TTL_IN.json)|- | [ERROR](#4f5d77f1fc49b1b854e116048c24058d) | [ERROR](#4f5d77f1fc49b1b854e116048c24058d) | [](#4f5d77f1fc49b1b854e116048c24058d) |
 |[SET_MPLS_TTL](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/15_SET_MPLS_TTL.json)|- | [ERROR](#391ff7ab74606cd489b6f124de990d54) | [ERROR](#391ff7ab74606cd489b6f124de990d54) | [ERROR](#391ff7ab74606cd489b6f124de990d54) |
 |[DEC_MPLS_TTL](https://github.com/osrg/ryu/tree/master/ryu/tests/switch/of13/action/16_DEC_MPLS_TTL.json)|- | [ERROR](#99129ba6405fd4693710eefd98e3f84d) | [ERROR](#99129ba6405fd4693710eefd98e3f84d) | [ERROR](#99129ba6405fd4693710eefd98e3f84d) |
@@ -212,6 +212,7 @@ title: Ryu Certification - __TITLE__
 <pre>
     ethernet/ipv4/tcp-->'eth_type=0x0800,actions=push_vlan:0x8100,output:2'                              ERROR
         Receiving timeout: no change in tx_packets on target.
+dpid=0000000000000011 : Connect unknown SW.
     ethernet/ipv6/tcp-->'eth_type=0x86dd,actions=push_vlan:0x8100,output:2'                              ERROR
         Receiving timeout: no change in tx_packets on target.
     ethernet/arp-->'eth_type=0x0806,actions=push_vlan:0x8100,output:2'                                   ERROR
@@ -252,7 +253,7 @@ title: Ryu Certification - __TITLE__
 </pre>
 <a name="069a36adbdd0739563365540be6e9b28">action: 11_COPY_TTL_OUT</a>
 <pre>
-    ethernet/mpls(ttl=64)/ipv4(ttl=32)/tcp-->'eth_type=0x8847,actions=copy_ttl_out,output:2'             OK
+    ethernet/mpls(ttl=64)/ipv4(ttl=32)/tcp-->'eth_type=0x8847,actions=copy_ttl_out,output:2'             ERROR
         Failed to add flows: OFPErrorMsg[type=0x02, code=0x00]
     ethernet/mpls(ttl=64)/ipv6(hop_limit=32)/tcp-->'eth_type=0x8847,actions=copy_ttl_out,output:2'       ERROR
         Failed to add flows: OFPErrorMsg[type=0x02, code=0x00]
@@ -279,7 +280,6 @@ title: Ryu Certification - __TITLE__
         Receiving timeout: no change in tx_packets on tester.
     ethernet/mpls(ttl=64)/ipv6/tcp-->'eth_type=0x8847,actions=dec_mpls_ttl,output:2'                     ERROR
         Receiving timeout: no change in tx_packets on tester.
-dpid=0000000000000011 : Connect unknown SW.
     ethernet/mpls(ttl=64)/arp-->'eth_type=0x8847,actions=dec_mpls_ttl,output:2'                          ERROR
         Receiving timeout: no change in tx_packets on tester.
 </pre>
@@ -1636,7 +1636,7 @@ dpid=0000000000000011 : Connect unknown SW.
     ethernet/ipv6/sctp(src_port=12345)-->'sctp_src=11111,actions=output:2'                               ERROR
         Table-miss error: no change in lookup_count.
     ethernet/vlan/ipv6/sctp(src_port=11111)-->'sctp_src=11111,actions=output:2'                          ERROR
-        Receiving timeout: no change in tx_packets on target.
+        Receiving timeout: no change in rx_packets on tester.
     ethernet/vlan/ipv6/sctp(src_port=11111)-->'sctp_src=11111,actions=output:CONTROLLER'                 OK
     ethernet/vlan/ipv6/sctp(src_port=12345)-->'sctp_src=11111,actions=output:2'                          ERROR
         Table-miss error: no change in lookup_count.
@@ -1926,7 +1926,7 @@ dpid=0000000000000011 : Connect unknown SW.
     ethernet/ipv6/icmpv6(data=nd_neighbor(option=nd_option_tla(hw_src='aa:aa:aa:aa:aa:aa')))-->'ipv6_nd_tll=22:22:22:22:22:22,actions=output:2' ERROR
         Table-miss error: no change in lookup_count.
     ethernet/vlan/ipv6/icmpv6(data=nd_neighbor(option=nd_option_tla(hw_src='22:22:22:22:22:22')))-->'ipv6_nd_tll=22:22:22:22:22:22,actions=output:2' ERROR
-        Receiving timeout: no change in tx_packets on target.
+        Receiving timeout: no change in rx_packets on tester.
     ethernet/vlan/ipv6/icmpv6(data=nd_neighbor(option=nd_option_tla(hw_src='22:22:22:22:22:22')))-->'ipv6_nd_tll=22:22:22:22:22:22,actions=output:CONTROLLER' OK
     ethernet/vlan/ipv6/icmpv6(data=nd_neighbor(option=nd_option_tla(hw_src='aa:aa:aa:aa:aa:aa')))-->'ipv6_nd_tll=22:22:22:22:22:22,actions=output:2' ERROR
         Table-miss error: no change in lookup_count.
@@ -2002,7 +2002,7 @@ dpid=0000000000000011 : Connect unknown SW.
     ethernet/arp(opcode=1)-->'arp_op=1,actions=output:2'                                                 OK
 dpid=0000000000000001 : Leave target SW.
     ethernet/arp(opcode=1)-->'arp_op=1,actions=output:CONTROLLER'                                        ERROR
-        Failed to add flows: flow stats request timeout.
+        Failed to request port stats from target: request timeout.
 waiting for switches connection...
 dpid=0000000000000001 : Join target SW.
     ethernet/arp(opcode=2)-->'arp_op=1,actions=output:2'                                                 ERROR
@@ -2197,7 +2197,7 @@ dpid=0000000000000001 : Join target SW.
     2Mbps(ethernet/ipv4(src=random,dst=random)/tcp(src_port=random,dst_port=random))-->'in_port=1,actions=group:select(actions=output:2/actions=output:3)' OK
 ..........
     2Mbps(ethernet/ipv6(src=random,dst=random)/tcp(src_port=random,dst_port=random))-->'in_port=1,actions=group:select(actions=output:2/actions=output:3)' ERROR
-        Received unexpected throughput: {'in_port': 2} 0.00kbps, {'in_port': 3} 2012.26kbps
+        Received unexpected throughput: {'in_port': 2} 0.00kbps, {'in_port': 3} 2014.24kbps
 ..........
     2Mbps(ethernet/arp(src_ip=random,dst_ip=random)-->'in_port=1,actions=group:select(actions=output:2/actions=output:3)' OK
 </pre>
